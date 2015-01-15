@@ -54,22 +54,13 @@ COMPONENT_HOOKABLE(AutonomousThink);
 COMPONENT_HOOKABLE(TeleopThink);
 COMPONENT_HOOKABLE(TestThink);
 
-COMPONENT_HOOKABLE(BuildComponentsString);
-	// appends ":componentname" to ret_string for logging
-	// INPUT, OUTPUT:
-		string ret_string;
-
-COMPONENT_HOOKABLE(BuildComponentsPrettyString);
-	// appends ", Component name" to ret_string for display
-	// INPUT, OUTPUT:
-		string ret_string;
+COMPONENT_HOOKABLE(BuildComponentsName);
+	//appends component name to ret_string
+	//INPUT / OUTPUT:
+	string ret_string;
 
 //COMPONENT_HOOKABLE(OnEntityPreSpawn);
 	// return error to prevent entity spawn, or modify the entity
 
 //COMPONENT_HOOKABLE(GetPressedKeys);
 	// TODO change this into a general PlayerPostThink hook?
-
-COMPONENT_HOOKABLE(SetComponentName);
-	// OUT
-	string compname; // name of the component/mod if it warrants showing as such in the server browser

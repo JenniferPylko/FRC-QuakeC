@@ -5,6 +5,8 @@
 
 using namespace kzqcvm;
 
+extern void register_builtins(Kzqcvm* vm);
+
 class Robot: public IterativeRobot
 {
 private:
@@ -22,14 +24,14 @@ private:
 	{
 		lw = LiveWindow::GetInstance();
 		std::cout << "tahueo" << std::endl;
-		QuakeC_VM = new Kzqcvm("rprogs.dat");
+		QuakeC_VM = new Kzqcvm("frcprogs.dat");
+		register_builtins(QuakeC_VM);
 		robotInit = QuakeC_VM->GetFunction("RobotInit");
 		autonomousInit = QuakeC_VM->GetFunction("AutonomousInit");
 		autonomousThink = QuakeC_VM->GetFunction("AutonomousThink");
 		teleopInit = QuakeC_VM->GetFunction("TeleopInit");
 		teleopThink = QuakeC_VM->GetFunction("TeleopThink");
 		testThink = QuakeC_VM->GetFunction("TestThink");
-		globalThink = QuakeC_VM->GetFunction("GlobalThink");
 		robotInit.Run();
 	}
 
@@ -40,7 +42,6 @@ private:
 
 	void AutonomousPeriodic()
 	{
-		globalThink.Run();
 		autonomousThink.Run();
 	}
 
@@ -51,14 +52,12 @@ private:
 
 	void TeleopPeriodic()
 	{
-		globalThink.Run();
 		teleopThink.Run();
 	}
 
 	void TestPeriodic()
 	{
 		lw->Run();
-		globalThink.Run();
 		testThink.Run();
 	}
 };

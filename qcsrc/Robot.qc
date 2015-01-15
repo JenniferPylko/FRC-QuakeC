@@ -1,5 +1,7 @@
 void RobotInit()
 {
+	COMPONENT_CALLHOOK(BuildComponentsName);
+	print(ret_string);
 	COMPONENT_CALLHOOK(RobotInit);
 }
 

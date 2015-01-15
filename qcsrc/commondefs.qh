@@ -1,5 +1,14 @@
 .string classname;
 .string netname; //remove? leftover from xonotic
+.void() think;
+.float nextthink;
+.entity chain;
+
+void println(string s)
+{
+	print(s);
+	print("\n");
+}
 
 #ifdef GMQCC
 #define func_null nil
