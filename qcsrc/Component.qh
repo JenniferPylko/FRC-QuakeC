@@ -64,10 +64,10 @@ COMPONENT_HOOKABLE(BuildComponentsPrettyString);
 	// INPUT, OUTPUT:
 		string ret_string;
 
-COMPONENT_HOOKABLE(OnEntityPreSpawn);
+//COMPONENT_HOOKABLE(OnEntityPreSpawn);
 	// return error to prevent entity spawn, or modify the entity
 
-COMPONENT_HOOKABLE(GetPressedKeys);
+//COMPONENT_HOOKABLE(GetPressedKeys);
 	// TODO change this into a general PlayerPostThink hook?
 
 COMPONENT_HOOKABLE(SetComponentName);

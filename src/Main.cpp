@@ -22,7 +22,7 @@ private:
 	{
 		lw = LiveWindow::GetInstance();
 		std::cout << "tahueo" << std::endl;
-		QuakeC_VM = new Kzqcvm("robot_qcprogs.dat");
+		QuakeC_VM = new Kzqcvm("rprogs.dat");
 		robotInit = QuakeC_VM->GetFunction("RobotInit");
 		autonomousInit = QuakeC_VM->GetFunction("AutonomousInit");
 		autonomousThink = QuakeC_VM->GetFunction("AutonomousThink");

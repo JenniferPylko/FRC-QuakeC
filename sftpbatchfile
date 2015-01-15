@@ -1,2 +1,3 @@
 put bin/FRCUserProgram /home/lvuser/
+put bin/rprogs.dat /home/lvuser/
 put /home/benjamin/wpilib/cpp/current/ant/robotCommand /home/lvuser/

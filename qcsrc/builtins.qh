@@ -1,0 +1,4 @@
+entity spawn(void)				= #1;//UNIMPLEMENTED
+void remove(entity e)				= #2;//UNIMPLEMENTED
+void backtrace(string s)			= #3;//UNIMPLEMENTED
+void error(string s)				= #4;//UNIMPLEMENTED

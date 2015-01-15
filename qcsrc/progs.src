@@ -1,5 +1,11 @@
-../bin/robot_qcprogs.dat
+../bin/rprogs.dat
+
+builtins.qh
+
+commondefs.qh
 
 Component.qh
 
 Component.qc
+
+Robot.qc

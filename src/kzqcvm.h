@@ -174,7 +174,7 @@ public:
 	Entity CreateEntity(int64_t time);
 	void DeleteEntity(Entity entity, int64_t time);
 
-	static constexpr float ENTITY_REUSE_DELAY = 2.0f;
+	static constexpr float ENTITY_REUSE_DELAY = 0.0f;
 
 	/*
 	Field offsets can be retrieved with the following functions. They return a

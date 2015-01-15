@@ -1,0 +1,10 @@
+.string classname;
+.string netname; //remove? leftover from xonotic
+
+#ifdef GMQCC
+#define func_null nil
+#define string_null nil
+#else
+var void func_null(void);
+var string string_null;
+#endif
