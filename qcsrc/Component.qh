@@ -1,0 +1,75 @@
+//from mutators/base.qh in the xonotic project
+
+#define CBC_ORDER_EXCLUSIVE 3
+#define CBC_ORDER_FIRST 1
+#define CBC_ORDER_LAST 2
+#define CBC_ORDER_ANY 4
+
+float CallbackChain_ReturnValue; // read-only field of the current return value
+
+entity CallbackChain_New(string name);
+float CallbackChain_Add(entity cb, float() func, float order);
+float CallbackChain_Remove(entity cb, float() func);
+// a callback function is like this:
+// float mycallback(entity me)
+// {
+//   do something
+//   return r;
+// }
+float CallbackChain_Call(entity cb);
+
+#define COMPONENT_REMOVING 0
+#define COMPONENT_ADDING 1
+#define COMPONENT_ROLLING_BACK 2
+typedef float(float) componentfunc_t;
+float Component_Add(componentfunc_t func, string name);
+void Component_Remove(componentfunc_t func, string name); // calls error() on fail
+
+#define COMPONENT_ADD(name) Component_Add(COMPONENT_##name, #name)
+#define COMPONENT_REMOVE(name) Component_Remove(COMPONENT_##name, #name)
+#define COMPONENT_DEFINITION(name) float COMPONENT_##name(float mode)
+#define COMPONENT_DECLARATION(name) float COMPONENT_##name(float mode)
+#define COMPONENT_HOOKFUNCTION(name) float HOOKFUNCTION_##name()
+#define COMPONENT_HOOK(cb,func,order) do { if(mode == COMPONENT_ADDING) { if(!HOOK_##cb) HOOK_##cb = CallbackChain_New(#cb); if(!CallbackChain_Add(HOOK_##cb,HOOKFUNCTION_##func,order)) { print("HOOK FAILED: ", #func, "\n"); return 1; } } else if(mode == COMPONENT_REMOVING || mode == COMPONENT_ROLLING_BACK) { if(HOOK_##cb) CallbackChain_Remove(HOOK_##cb,HOOKFUNCTION_##func); } } while(0)
+#define COMPONENT_ONADD if(mode == COMPONENT_ADDING)
+#define COMPONENT_ONREMOVE if(mode == COMPONENT_REMOVING)
+#define COMPONENT_ONROLLBACK_OR_REMOVE if(mode == COMPONENT_REMOVING || mode == COMPONENT_ROLLING_BACK)
+
+#define COMPONENT_HOOKABLE(cb) entity HOOK_##cb
+#define COMPONENT_CALLHOOK(cb) CallbackChain_Call(HOOK_##cb)
+
+#define COMPONENT_RETURNVALUE CallbackChain_ReturnValue
+
+
+
+
+// register all possible hooks here
+
+
+COMPONENT_HOOKABLE(RobotInit);
+COMPONENT_HOOKABLE(AutonomousInit);
+COMPONENT_HOOKABLE(TeleopInit);
+COMPONENT_HOOKABLE(RobotGlobalThink);
+COMPONENT_HOOKABLE(AutonomousThink);
+COMPONENT_HOOKABLE(TeleopThink);
+COMPONENT_HOOKABLE(TestThink);
+
+COMPONENT_HOOKABLE(BuildComponentsString);
+	// appends ":componentname" to ret_string for logging
+	// INPUT, OUTPUT:
+		string ret_string;
+
+COMPONENT_HOOKABLE(BuildComponentsPrettyString);
+	// appends ", Component name" to ret_string for display
+	// INPUT, OUTPUT:
+		string ret_string;
+
+COMPONENT_HOOKABLE(OnEntityPreSpawn);
+	// return error to prevent entity spawn, or modify the entity
+
+COMPONENT_HOOKABLE(GetPressedKeys);
+	// TODO change this into a general PlayerPostThink hook?
+
+COMPONENT_HOOKABLE(SetComponentName);
+	// OUT
+	string compname; // name of the component/mod if it warrants showing as such in the server browser
