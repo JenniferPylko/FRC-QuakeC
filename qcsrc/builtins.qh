@@ -1,5 +1,7 @@
 entity spawn(void)				= #1;
 void remove(entity e)				= #2;
-void backtrace(string s)			= #3;//UNIMPLEMENTED
-void error(string s)				= #4;//UNIMPLEMENTED
-void print(string s)				= #5;//UNIMPLEMENTED
+void backtrace(string s)			= #3;
+void error(string s)				= #4;
+void print(string s)				= #5;
+string strcat(string s1, string s2)		= #6;
+vector builtin_joystick_func(float deviceID)	= #7;

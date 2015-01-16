@@ -3,6 +3,12 @@
 .void() think;
 .float nextthink;
 .entity chain;
+.float dev_id;
+
+#define FALSE 0
+#define TRUE 1
+#define false 0
+#define true 1
 
 void println(string s)
 {
@@ -17,3 +23,7 @@ void println(string s)
 var void func_null(void);
 var string string_null;
 #endif
+
+//==========
+entity self;
+//==========

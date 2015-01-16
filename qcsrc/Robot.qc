@@ -1,5 +1,7 @@
 void RobotInit()
 {
+	wpilib_components_add();
+	user_components_add();
 	COMPONENT_CALLHOOK(BuildComponentsName);
 	print(ret_string);
 	COMPONENT_CALLHOOK(RobotInit);

@@ -2,10 +2,16 @@
 
 builtins.qh
 
-commondefs.qh
+defs.qh
 
 Component.qh
-
 Component.qc
 
+wpilib_components.qh
+wpilib_components.qc
+user_components.qh
+user_components.qc
+
 Robot.qc
+
+wpilib/joystick.qc
