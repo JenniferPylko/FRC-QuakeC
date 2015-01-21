@@ -1,3 +1,5 @@
+#pragma noref 1 //don't care if any of this stuff is unused
+
 .string classname;
 .string netname; //remove? leftover from xonotic
 .void() think;
@@ -27,3 +29,5 @@ var string string_null;
 //==========
 entity self;
 //==========
+
+#pragma noref 0 //start caring again

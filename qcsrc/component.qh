@@ -1,4 +1,4 @@
-//from mutators/base.qh in the xonotic project
+//from mutators/base.qh in the xonotic project, modified on 15 January 2015
 
 #define CBC_ORDER_EXCLUSIVE 3
 #define CBC_ORDER_FIRST 1

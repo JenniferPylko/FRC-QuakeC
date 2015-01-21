@@ -1,15 +1,12 @@
 AT = @
 INCDIR = -I/home/benjamin/wpilib/cpp/current/include
-CPPFLAGS += -g -Wall -W $(INCDIR) -std=c++14 -fPIC
+CPPFLAGS += -g -Wall -Wno-unused-parameter $(INCDIR) -std=c++14 -fPIC
 LFLAGS = -L/home/benjamin/wpilib/cpp/current/lib -lwpi
 CXX = arm-frc-linux-gnueabi-g++
 QCC = gmqcc
 QCCFLAGS += \
-	-std=fteqcc \
+	-std=gmqcc \
 	-Werror -Wall \
-	-Wno-field-redeclared \
-	-Wno-double-declaration \
-	-Wno-uninitialized-global \
 	-O3 \
 	-fadjust-vector-fields \
 	-fftepp \
@@ -20,7 +17,6 @@ QCCFLAGS += \
 	-ftranslatable-strings \
 	-fno-initialized-nonconstants \
 	-fno-assign-function-types \
-	-flno \
 	-fcorrect-ternary \
 	-fno-single-vector-defs \
 	-fcorrect-logic \

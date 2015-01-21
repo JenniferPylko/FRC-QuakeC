@@ -1,4 +1,4 @@
-//from components/base.qc in the xonotic project
+//from components/base.qc in the xonotic project, modified on 15 January 2015
 
 .float() cbc_func;
 .entity cbc_next;

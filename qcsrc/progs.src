@@ -1,17 +1,27 @@
 ../bin/frcprogs.dat
 
+//engine defs here
 builtins.qh
-
 defs.qh
 
-Component.qh
-Component.qc
+//the component system
+component.qh
+component.qc
 
+//component loading
 wpilib_components.qh
 wpilib_components.qc
 user_components.qh
 user_components.qc
 
+
+//the main file, calls the components
 Robot.qc
 
+//WPILib components
 wpilib/joystick.qc
+
+
+//user components
+//userProgram doesn't have to stay here, it's mostly an example
+userProgram.qc
